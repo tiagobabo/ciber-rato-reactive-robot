@@ -16,15 +16,15 @@ This paper describes a reactive robotic agent for the Ciber-Rato platform. The a
 \end{abstract}
 
 \section{Introdução}
-O simulador Ciber-Rato (\cite{microrato}) surgiu no âmbito de um concurso de robótica móvel organizado pela Universidade de Aveiro. O objetivo das equipas é construir um algoritmo de controlo que comanda um robô virtual, com a finalidade de resolver um labirinto. 
+O simulador Ciber-Rato surgiu no âmbito de um concurso de robótica móvel organizado pela Universidade de Aveiro. O objetivo das equipas é construir um algoritmo de controlo que comanda um robô virtual, com a finalidade de resolver um labirinto. 
 
-Para efeitos de desenvolvimento, foi considerado o cenário em que este tem de encontrar um objeto em específico (representado por um queijo, normalmente).
+Para resolver o labirinto, o robô deve encontrar um objeto em específico (representado por um queijo, normalmente).
 
 Este artigo descreve uma possível implementação de um robô reativo que consegue resolver um determinado número de configurações de obstáculos e labirintos, recorrendo a um algoritmo que tenta contornar paredes. 
 
 \section{Robô Virtual}
 
-O robô virtual é constituído por uma forma circular, equipado com sensores, atuadores e botões de comando. 
+O robô virtual é constituído por uma forma circular, equipado com sensores, atuadores e botões de comando. (\cite{microrato})
 
 \subsection{Sensores}
 Para o desenvolvimento do algoritmo foi considerado que o robô possui: três sensores de obstáculos, um sensor de farol, que lhe indica a direção da zona de chegada, um sensor de colisões binário e um sensor que lhe diz se está na área do objetivo. 
@@ -38,7 +38,7 @@ O robô possui dois motores, representando duas rodas, que permitem efetuar tran
 Quando o robô atinge o objetivo final deve sinalizar que lá chegou, através dos \emph{leds} que possui. 
 
 \subsection{Botões de Comando}
-Os botões de comando, \emph{Start} e \emph{Stop}, permitem ao simulador controlar o decorrer da competição, devendo o robô obedecer à sua alteração.
+Os botões de comando, \emph{Start} e \emph{Stop}, permitem ao simulador controlar o decorrer da competição.
 
 \section{Simulador}
 
