@@ -18,7 +18,7 @@ This paper describes a reactive robotic agent for the Ciber-Rato platform. The a
 \section{Introdução}
 O simulador Ciber-Rato surgiu no âmbito de um concurso de robótica móvel organizado pela Universidade de Aveiro. O objetivo das equipas é construir um algoritmo de controlo que comanda um robô virtual, com a finalidade de resolver um labirinto. 
 
-Para o desenvolvimento deste robô, foi considerado o cenário em que este tem de encontrar um objeto em específico (representado por um queijo, normalmente).
+Para efeitos de desenvolvimento, foi considerado o cenário em que este tem de encontrar um objeto em específico (representado por um queijo, normalmente).
 
 Este artigo descreve uma possível implementação de um robô reativo que consegue resolver um determinado número de configurações de obstáculos e labirintos, recorrendo a um algoritmo que tenta contornar paredes. 
 
@@ -38,7 +38,7 @@ O robô possui dois motores, representando duas rodas, que permitem efetuar tran
 Quando o robô atinge o objetivo final deve sinalizar que lá chegou, através dos \emph{leds} que possui. 
 
 \subsection{Botões de Comando}
-Os botões de comando, \emph{Start} e \emph{Stop}, permitem ao simulador controlar o decorrer da competição, devendo o robô obedecer à sua mudança.
+Os botões de comando, \emph{Start} e \emph{Stop}, permitem ao simulador controlar o decorrer da competição, devendo o robô obedecer à sua alteração.
 
 \section{Simulador}
 
@@ -55,7 +55,7 @@ O simulador Ciber-Rato é responsável por:
 \end{enumerate}
 \end{enumerate}
 
-O cenário da competição é composto por uma área retangular, delimitada, composta por obstáculos, uma área objetivo e várias posições onde os robôs podem começar. Em relação aos obstáculos, estes podem ter alturas diferentes, influenciando a leitura do sensor de farol do robô. Se o obstáculo ultrapassar uma certa altura, o robô deixa de conseguir receber a informação proveniente do sensor. 
+O cenário da competição é delineado por uma área retangular, delimitada, composta por obstáculos, uma área objetivo e várias posições onde os robôs podem começar. Em relação aos obstáculos, estes podem ter alturas diferentes, influenciando a leitura do sensor de farol do robô. Se o obstáculo ultrapassar uma certa altura, o robô deixa de conseguir receber a informação proveniente do sensor. 
 
 \section{Algoritmo usado}
 
