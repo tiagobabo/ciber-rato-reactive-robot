@@ -1,0 +1,72 @@
+\documentclass[citeauthoryear]{llncs} %
+\usepackage[utf8]{inputenc}
+\bibliographystyle{splncs}
+
+\begin{document}
+
+\title{Implementação de um robô reativo para o simulador Ciber-Rato}
+\author{Tiago Babo e Hélder Moreira}
+
+\institute{Faculdade de Engenharia da Universidade do Porto}
+
+\maketitle
+
+\begin{abstract}
+This paper describes a reactive robotic agent for the Ciber-Rato platform. The algorithm used by the robot, based on the behaviour “follow wall” - when possible - doesn't save previous information and can finish some types of mazes easily.
+\end{abstract}
+
+\section{Introdução}
+O simulador Ciber-Rato surgiu no âmbito de um concurso de robótica móvel organizado pela Universidade de Aveiro. O objetivo das equipas é construir um algoritmo de controlo que comanda um robô virtual, com a finalidade de resolver um labirinto. 
+
+Para o desenvolvimento deste robô, foi considerado o cenário em que este tem de encontrar um objeto em específico (representado por um queijo, normalmente).
+
+Este artigo descrebe uma possível implementação de um robô reativo que consegue resolver um determinado número de configurações de obstáculos e labirintos, recorrendo a um algoritmo que tenta contornar paredes. 
+
+\section{Robô Virtual}
+
+O robô virtual é constituído por uma forma circular, equipado com sensores, atuadores e botões de comando. (\cite{microrato})
+
+\subsection{Sensores}
+Para o desenvolvimento do algoritmo foi considerado que o robô possui: três sensores de obstáculos, um sensor de farol, que lhe indica a direção da zona de chegada, um sensor de colisões binário e um sensor que lhe diz se está na área do objetivo. 
+
+Os sensores têm diferentes resoluções, ruído associado e pode haver alguma latência na sua leitura.
+
+\subsection{Atuadores}
+
+O robô possui dois motores, representando duas rodas, que permitem efetuar translações ou rotações da sua posição. É possível especificar a força aplicada a cada roda. 
+
+Quando o robô atinge o objetivo final deve sinalizar que lá chegou, através dos leds que possui. 
+
+\subsection{Botões de Comando}
+Os botões de comando, Start e Stop, permitem ao simulador controlar o decorrer da competição, devendo o robô obedecer à sua mudança.
+
+\section{Simulador}
+
+O simulador Ciber-Rato é responsável por:
+\begin{enumerate} 
+\item Implementar o labirinto virtual 
+\item Implementar o corpo virtual do robô
+\item Coordenar o movimento dos robôs no labirinto em articulação com o agente
+\item Desempenhar o papel de juiz virtual da prova:
+\begin{enumerate} 
+\item Controla o tempo da prova
+\item Aplica as penalizações (choque com obstáculos, por exemplo)
+\item Calcula as pontuações
+\end{enumerate}
+\end{enumerate}
+
+O cenário da competição é composto por uma área retangular, delimitada, composta por obstáculos, uma área objetivo e várias posições onde os robôs podem começar. Em relação aos obstáculos, estes podem ter alturas diferentes, influenciando a leitura do sensor de farol do robô. Se o obstáculo ultrapassar uma certa altura, o robô deixa de conseguir receber a informação proveniente do sensor. 
+
+\section{Algoritmo usado}
+
+\section{Conclusões}
+
+\begingroup
+\renewcommand\refname{Referências}
+\begin{thebibliography}{}
+
+\bibitem[Micro-Rato 2011]{microrato}
+Micro-Rato, Departamento de Eletrónica e Telecomunicações, Universidade de Aveiro, 2011, "CiberRato 2011 - Rules and Technical Specifications" Acedido a 3 de Novembro 2012. http://microrato.ua.pt
+\end{thebibliography}
+\endgroup
+\end{document}
