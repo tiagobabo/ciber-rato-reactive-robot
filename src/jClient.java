@@ -143,25 +143,25 @@ public class jClient {
 	}
 
 	public void wander(boolean followBeacon) {
-		// verifica se h‡ algum obst‡culo a evitar
+		// verifica se hÃ¡ algum obstÃ¡culo a evitar
 		if(irSensor0 > 2.0 || irSensor1 > 2.0 ||  irSensor2 > 2.0)
 			processWall();
-		// se n‹o houver obst‡culos e o beacon n‹o estiver enquandrado, roda
+		// se nÃ£o houver obstÃ¡culos e o beacon nÃ£o estiver enquandrado, roda
 		else if(followBeacon && beacon.beaconVisible && beacon.beaconDir > 10.0) 
 			cif.DriveMotors(0.0,0.15);
 		else if(followBeacon && beacon.beaconVisible && beacon.beaconDir < -10.0) 
 			cif.DriveMotors(0.15,0.0);
-		// caso contr‡rio, anda em frente
+		// caso contrÃ¡rio, anda em frente
 		else cif.DriveMotors(0.1,0.1);
 		
 	}
 
 	private void processWall() {
 		
-		// enquanto o beacon n‹o estiver enquadrado ou n‹o estiver vis’vel, percorre a parede
+		// enquanto o beacon nÃ£o estiver enquadrado ou nÃ£o estiver visÃ­vel, percorre a parede
 		while(beacon.beaconDir > 15.0 || beacon.beaconDir < -15.0 || !beacon.beaconVisible)
 		{
-			// se bater, tenta rodar para sair da situa‹o
+			// se bater, tenta rodar para sair da situaÃ§Ã£o
 			if(cif.GetBumperSensor()) {
 				cif.DriveMotors(-0.15, 0.15);
 			}
@@ -170,20 +170,20 @@ public class jClient {
 			cif.ReadSensors();
 			getInfo();
 			
-			// se estiver numa esquisa, roda no sentido do rel—gio
+			// se estiver numa esquisa, roda no sentido do relÃ³gio
 			if (irSensor2 < 2.0 && irSensor0 < 2.0 && irSensor2 < 3.0) {
 				cif.DriveMotors(0.1, -0.1);
-			// se estiver num canto, roda no sentido contr‡rio ao do rel—gio
+			// se estiver num canto, roda no sentido contrÃ¡rio ao do relï¿½relÃ³gio
 			} else if (irSensor0 <= 2.0 && irSensor1 <= 2.0 && irSensor2 <= 6.0) {
 				cif.DriveMotors(0.1, 0.1);
-			// caso n‹o haja obst‡culo ou esteja perto da parede, anda
+			// caso nÃ£o haja obstÃ¡culo ou esteja perto da parede, anda
 			} else if (irSensor0 >= 2.0 || irSensor2 > 6.0) {
 				cif.DriveMotors(-0.1, 0.1);
 			}
 
 		}
 		
-		// se o beacon estiver vis’vel, tenta desviar-se dos obst‡culos
+		// se o beacon estiver visÃ­vel, tenta desviar-se dos obstÃ¡culos
 		if(beacon.beaconVisible) {
 			if(irSensor0 > 2.0 && irSensor1 >= irSensor2) cif.DriveMotors(0.1,-0.1);
 			else if(irSensor0 > 2.0 && irSensor1 < irSensor2) cif.DriveMotors(-0.1,0.1);
