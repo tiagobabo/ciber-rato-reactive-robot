@@ -94,7 +94,6 @@ public class jClient {
 		beaconToFollow = 0;
 		ground = -1;
 		state = State.RUN;
-		counter = 0;
 	}
 
 	/** 
@@ -148,9 +147,9 @@ public class jClient {
 			processWall();
 		// se não houver obstáculos e o beacon não estiver enquandrado, roda
 		else if(followBeacon && beacon.beaconVisible && beacon.beaconDir > 10.0) 
-			cif.DriveMotors(0.0,0.15);
+			cif.DriveMotors(0.0,0.1);
 		else if(followBeacon && beacon.beaconVisible && beacon.beaconDir < -10.0) 
-			cif.DriveMotors(0.15,0.0);
+			cif.DriveMotors(0.1,0.0);
 		// caso contrário, anda em frente
 		else cif.DriveMotors(0.1,0.1);
 		
@@ -173,7 +172,7 @@ public class jClient {
 			// se estiver numa esquisa, roda no sentido do relógio
 			if (irSensor2 < 2.0 && irSensor0 < 2.0 && irSensor2 < 3.0) {
 				cif.DriveMotors(0.1, -0.1);
-			// se estiver num canto, roda no sentido contrário ao do rel�relógio
+			// se estiver num canto, roda no sentido contrário ao do relógio
 			} else if (irSensor0 <= 2.0 && irSensor1 <= 2.0 && irSensor2 <= 6.0) {
 				cif.DriveMotors(0.1, 0.1);
 			// caso não haja obstáculo ou esteja perto da parede, anda
@@ -247,8 +246,6 @@ public class jClient {
 	private double irSensor0, irSensor1, irSensor2;
 	private beaconMeasure beacon;
 	private int    ground;
-	private int counter;
-	private int corners;
 	private State state;
 
 	private int beaconToFollow;
