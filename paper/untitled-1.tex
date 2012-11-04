@@ -1,6 +1,7 @@
 \documentclass[citeauthoryear]{llncs} %
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{float}
 \bibliographystyle{splncs}
 
 \begin{document}
@@ -60,7 +61,7 @@ O cenário da competição é delineado por uma área retangular, delimitada, co
 
 \section{Algoritmo usado}
 
-O algoritmo usado adota uma estratégia puramente reativa. Segundo Ronald C. Arkin, esta metedologia permite uma resposta rápida e flexível do sistema. É caracterizada por uma estrutura baseada em blocos de comportamento com diferentes prioridades e por não guardar qualquer informação sobre o estado do mundo e reagindo apenas às informações do presente. (\cite{arkin})
+O algoritmo usado adota uma estratégia puramente reativa. Segundo Ronald C. Arkin (\cite{arkin}), esta metodologia permite uma resposta rápida e flexível do sistema. É caracterizada por uma estrutura baseada em blocos de comportamento com diferentes prioridades e por não guardar qualquer informação sobre o estado do mundo e reagindo apenas às informações do presente. 
 
 Desta forma, a estratégia adotada segue as seguintes prioridades:
 
@@ -70,12 +71,15 @@ Desta forma, a estratégia adotada segue as seguintes prioridades:
 \item Andar em frente
 \end{enumerate}
 
+Para além disso, o tipo de arquitetura em que se baseia o algoritmo denomina-se por \emph{subsumption architecture} (\cite{brooks}). Isto é, o comportamento do robô está dividido em diferentes camadas que implementam um objetivo específico. No seu conjunto, o controlo do robô é composto por uma série de camadas, com diferentes níveis, e que pressupõe uma ordem de prioridade e subsunção.  Como exemplo, a camada "andar em direção ao objetivo" tem, no seu topo, a camada "evitar obstáculos" que, por sua vez, tem a camada "explorar o mundo".
+
 Para evitar um obstáculo, é usado um algoritmo de contorno de paredes, mantendo esta estratégia até que consiga ver o farol e esteja enquadrado com ele, considerando uma amplitude de 20º. O robô desloca-se sempre no sentido dos ponteiros do relógio.   
 
-\begin{figure}[htb]
+\begin{figure}[]
 \begin{center}
 \includegraphics[scale=0.30]{fig1.png}
 \caption{Exemplo de um obstáculo contornável}
+\vspace{-20pt}
 \end{center}
 \end{figure}
 
@@ -83,20 +87,21 @@ Este método consegue resolver diferentes tipos de configurações. A figura 1 r
 
 No entanto, este algoritmo não consegue resolver um tipo específico de labirintos. Como não é guardada nenhuma informação sobre o contorno da parede - mesmo o próprio facto de a estarmos a contornar - torna-se difícil evitar que o robô entre em ciclos, a não ser que consiga obter informação do objetivo passível de abortar o contorno e que não o faça recomeçar o contorno da mesma parede.  
 
-\begin{figure}[htb]
+\begin{figure}[]
 \begin{center}
 \includegraphics[scale=0.20]{fig2.png}
 \caption{Exemplo de um obstáculo que conduz a um ciclo}
+\vspace{-20pt}
 \end{center}
 \end{figure}
 
-
 Tal como se pode ver na figura 2, em que há uma parede de altura inferior à mínima para o robô não obter informação do objetivo, o robô desloca-se na sua direção. Ao verificar que se encontra em frente a uma parede, começa a contorna-la. Ao dobrar a esquina P1, e segundo o método descrito anteriormente, o robô vai obter informação que o faz abortar o contorno da parede. Ao deslocar-se no sentido do objetivo, acaba por ir novamente em direção à parede, reiniciando o processo. Desta forma, entra em ciclo infinito. No entanto, se esta parede atingisse a altura mínima, o robô não obteria informação que o fizesse abortar o contorno, e, tal como na figura 1, atingiria o objetivo.   
 
-\begin{figure}[htb]
+\begin{figure}[]
 \begin{center}
 \includegraphics[scale=0.20]{fig3.png}
-\caption{Exemplo de um obstáculo que conduz a um ciclo}
+\caption{Outro exemplo de um obstáculo que conduz a um ciclo}
+\vspace{-20pt}
 \end{center}
 \end{figure}
 
@@ -113,13 +118,14 @@ A evolução natural deste algoritmo seria, então, alterar a abordagem purament
 \begingroup
 \renewcommand\refname{Referências}
 \begin{thebibliography}{}
-
-\bibitem[Micro-Rato 2011]{microrato}
-Micro-Rato, Departamento de Eletrónica e Telecomunicações, Universidade de Aveiro, 2011, "CiberRato 2011 - Rules and Technical Specifications" Acedido a 3 de Novembro 2012. http://microrato.ua.pt
 \bibitem[1995]{arkin}
 Arkin, R. (1995). Reactive robotic systems. The handbook of brain theory and neural networks, (404), 1–12
+\bibitem[Brooks 1986]{brooks}
+Brooks, R. (1986). A robust layered control system for a mobile robot. Robotics and Automation, IEEE Journal of.
 \bibitem[Luís et al.  2002]{encur}
 Luís, P., Martins, B., Almeida, P., e Silva, V. (1999). Detecção de configurações de obstáculos perigosas: aplicação no robô EnCuRRalado. 
+\bibitem[Micro-Rato 2011]{microrato}
+Micro-Rato, Departamento de Eletrónica e Telecomunicações, Universidade de Aveiro, 2011, "CiberRato 2011 - Rules and Technical Specifications" Acedido a 3 de Novembro 2012. http://microrato.ua.pt
 \end{thebibliography}
 \endgroup
 \end{document}
